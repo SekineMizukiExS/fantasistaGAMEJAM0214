@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
     {
         if (bomb)//爆弾の弾の移動
         {
-            thisBomb = true;
+            thisBomb= true;
             Fired = true;
         }
         else//プレイヤーの弾の移動
