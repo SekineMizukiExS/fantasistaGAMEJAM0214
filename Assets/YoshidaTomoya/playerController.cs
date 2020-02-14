@@ -25,19 +25,19 @@ public class playerController : MonoBehaviour
         {
             if (Input.GetAxis("Vertical") > 0)
             {
-                playerMove.y = Input.GetAxis("Vertical") * playerMoveSpeed;
+                playerMove.y += Input.GetAxis("Vertical") * playerMoveSpeed;
             }
             if (Input.GetAxis("Horizontal") > 0)
             {
-                playerMove.x = Input.GetAxis("Horizontal") * playerMoveSpeed;
+                playerMove.x += Input.GetAxis("Horizontal") * playerMoveSpeed;
             }
             if (Input.GetAxis("Vertical") < 0)
             {
-                playerMove.y = Input.GetAxis("Vertical") * playerMoveSpeed;
+                playerMove.y += Input.GetAxis("Vertical") * playerMoveSpeed;
             }
             if (Input.GetAxis("Horizontal") < 0)
             {
-                playerMove.x = Input.GetAxis("Horizontal") * playerMoveSpeed;
+                playerMove.x += Input.GetAxis("Horizontal") * playerMoveSpeed;
             }
 
             playerMove.z = 1.0f;
