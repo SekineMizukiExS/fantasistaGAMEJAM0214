@@ -17,7 +17,7 @@ public class TestShooter : MonoBehaviour
         if (Input.anyKey)
         {
             Instantiate(bullet,transform.position,transform.rotation);
-            bullet.GetComponent<Bullet>().Fire(gameObject);
+            bullet.GetComponent<Bullet>().Fire(gameObject,true);
         }
     }
 }
