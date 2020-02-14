@@ -16,6 +16,7 @@ public class TestShooter : MonoBehaviour
     {
         if (Input.anyKey)
         {
+            //下の二行を実行してください。instantiateでは発射元の位置と角度を渡してください。Fireでは発射元のGameObjectと発射元が爆弾かどうかのboolを渡してください
             Instantiate(bullet,transform.position,transform.rotation);
             bullet.GetComponent<Bullet>().Fire(gameObject,true);
         }

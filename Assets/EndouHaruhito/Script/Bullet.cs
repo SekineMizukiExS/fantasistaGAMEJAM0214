@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {   
-    [SerializeField]
-    private GameObject bulletObject;
+    //弾の速度
     [SerializeField]
     private float speed = 100.0f;
+
     [SerializeField]
     private string parentName;
     [SerializeField]
     private float timeLimit = 2;
     private float timer = 0;
+
     public bool Fired = false;
     public bool wallHit = false;
     public bool thisBomb;
@@ -59,7 +60,7 @@ public class Bullet : MonoBehaviour
             Fired = true;
         }
         else//プレイヤーの弾の移動
-        { 
+        {
             //位置・角度・発射元の取得
             parentName = obj.name;
             thisBomb = false;
