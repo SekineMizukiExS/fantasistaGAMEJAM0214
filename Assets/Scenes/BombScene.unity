@@ -263,3 +263,73 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64a1d09109393f4da710e4dfab000eb, type: 3}
+--- !u!1 &682259275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5498020156703079783, guid: d64a1d09109393f4da710e4dfab000eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 258717821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &682259279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682259275}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042f3ad1eaee53844b88ca26734bac37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubutuT: []
+  dropanimal: {fileID: 0}
+  timeOut: 0
+  timeElapsed: 0
+--- !u!1 &1076415264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076415266}
+  - component: {fileID: 1076415265}
+  m_Layer: 0
+  m_Name: CreateBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1076415265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076415264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042f3ad1eaee53844b88ca26734bac37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubutuT:
+  - {fileID: 5498020156703079783, guid: d64a1d09109393f4da710e4dfab000eb, type: 3}
+  dropanimal: {fileID: 1076415264}
+  timeOut: 0
+  timeElapsed: 0
+--- !u!4 &1076415266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076415264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
