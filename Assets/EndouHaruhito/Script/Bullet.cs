@@ -85,7 +85,9 @@ public class Bullet : MonoBehaviour
                         break;
                     case "Bomb":
                         //爆弾との衝突（ダメージ関数？）
-                        //other.GetComponent<BombController2>().
+                        if (!thisBomb) {
+                            other.GetComponent<BombController2>().HitPlayerBullet();
+                        }
                         break;
                         
                 }
