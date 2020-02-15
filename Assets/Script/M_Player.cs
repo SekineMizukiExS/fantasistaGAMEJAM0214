@@ -1,21 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class M_Player : MonoBehaviour
 {
+    [SerializeField] int _playerNo;
+    [SerializeField] int _HP = 10;
+
     GameManager _gm;
-    Vector3 _inputAxis;
-    Vector3 _inputAxis2;
+    public Vector3 _inputAxis;
+    public Vector3 _inputAxis2;
     [SerializeField] float _speed = 3.0f;
     Vector2 velocity2D = new Vector2(0,0);
     Quaternion targetDirection = Quaternion.identity;
 
     [SerializeField] GameObject _bullet;
+    [SerializeField] float _shotCT = 0.5f;
+    [SerializeField] float _shotCTcount = 0.0f;
 
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject _visual;
+    [SerializeField] Image _HPbar;
+                         
+    void Start()                         
     {
         _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -23,29 +30,102 @@ public class M_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _inputAxis.x = Input.GetAxis("Horizontal");
-        _inputAxis.y = Input.GetAxis("Vertical");
+        CheckHP();
+        if (_playerNo == 1) {
+            PlayerMove(1);
+            PlayerShot(1);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        }else if (_playerNo == 2) { 
+            PlayerMove(2);
+            PlayerShot(2);
+            
+        }
+
+    }
+
+    public void PlayerMove(int no)
+    {
+
+        _inputAxis.x = Input.GetAxis("Horizontal_P" + no.ToString());
+        _inputAxis.y = Input.GetAxis("Vertical_P" + no.ToString());
         _inputAxis.Normalize();
 
 
         transform.position += _inputAxis * _speed * _gm._nowSpeed;
-        if (_inputAxis.magnitude >= 0.1f) {
+        if (_inputAxis.magnitude >= 0.1f)
+        {
             velocity2D = (Vector2)_inputAxis;
             targetDirection = Quaternion.Euler(0.0f, 0.0f, Vector2.SignedAngle(Vector2.up, velocity2D));
-            
+
         }
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetDirection, 0.1f);
+        _visual.transform.localRotation = Quaternion.Slerp(_visual.transform.localRotation, targetDirection, 0.1f);
 
 
-        _inputAxis2.x = Input.GetAxis("Horizontal2");
-        _inputAxis2.y = Input.GetAxis("Vertical2");
+    }
+    void PlayerShot(int no)
+    {
+        _inputAxis2.x = Input.GetAxis("Horizontal2_P" + no.ToString());
+        _inputAxis2.y = Input.GetAxis("Vertical2_P" + no.ToString());
         _inputAxis2.Normalize();
 
-        if (_inputAxis2.magnitude >= 0.1f)
+        if (_inputAxis2.magnitude >= 0.1f && _shotCT < _shotCTcount)
         {
+
             GameObject insB = Instantiate(_bullet, transform.position, transform.localRotation);
             insB.GetComponent<M_Bullet>()._direction = _inputAxis2;
-            insB.GetComponent<M_Bullet>()._owner = M_Bullet.Owner._1p;
+            switch (_playerNo) {
+                case 1:
+                    insB.GetComponent<M_Bullet>()._owner = M_Bullet.Owner._1p;
+                    break;
+                case 2:
+                    insB.GetComponent<M_Bullet>()._owner = M_Bullet.Owner._2p;
+                    break;
+            }
+            _shotCTcount = 0;
+        }
+        else
+        {
+            _shotCTcount += 1 * Time.deltaTime;
         }
     }
+
+
+    public int GetPlayerNo()
+    {
+        return _playerNo;
+    }
+
+    public void SetPlayerNo(int n)
+    {
+        _playerNo = n;
+    }
+
+    public void SetHP(int hp)
+    {
+        _HP = hp;
+    }
+    public void AddDamage(int damage)
+    {
+        _HP -= damage;
+    }
+    public void CheckHP()
+    {
+        _HPbar.fillAmount = (float)_HP / 10.0f;
+
+        if(_HP <= 0)
+        {
+            switch (_playerNo)
+            {
+                case 1:
+                    _gm.Judge(GameManager.Winner._2pWin);
+                    break;
+                case 2:
+                    _gm.Judge(GameManager.Winner._1pWin);
+                    break;
+            }
+
+        }
+    }
+
+
 }
