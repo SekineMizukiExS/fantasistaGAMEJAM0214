@@ -21,21 +21,34 @@ public class M_Player : MonoBehaviour
 
     [SerializeField] GameObject _visual;
     [SerializeField] Image _HPbar;
+
+    int _padNo = 1;
+
+    AudioSource _audioSource;
+    [SerializeField]AudioClip[] _audioclips;
                          
     void Start()                         
     {
         _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if(_playerNo == playerSetter.playerPad1)
+        {
+            _padNo = 1;
+        }else if (_playerNo == playerSetter.playerPad2)
+        {
+            _padNo = 2;
+        }
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckHP();
-        if (_playerNo == 1) {
+        if (_padNo == 1) {
             PlayerMove(1);
             PlayerShot(1);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-        }else if (_playerNo == 2) { 
+        }else if (_padNo == 2) { 
             PlayerMove(2);
             PlayerShot(2);
             
@@ -70,6 +83,7 @@ public class M_Player : MonoBehaviour
 
         if (_inputAxis2.magnitude >= 0.1f && _shotCT < _shotCTcount)
         {
+            _audioSource.PlayOneShot(_audioclips[0]);
 
             GameObject insB = Instantiate(_bullet, transform.position, transform.localRotation);
             insB.GetComponent<M_Bullet>()._direction = _inputAxis2;
@@ -106,6 +120,7 @@ public class M_Player : MonoBehaviour
     }
     public void AddDamage(int damage)
     {
+        _audioSource.PlayOneShot(_audioclips[1]);
         _HP -= damage;
     }
     public void CheckHP()

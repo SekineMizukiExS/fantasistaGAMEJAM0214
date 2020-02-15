@@ -49,6 +49,8 @@ MonoBehaviour:
   _direction: {x: 1, y: 0, z: 0}
   _speed: 20
   _owner: 0
+  _hiteffect: {fileID: 8187125197776856692, guid: 44857ec7522232b4580c93f7dffc10bb,
+    type: 3}
 --- !u!61 &4746333748127983487
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class M_Bullet : MonoBehaviour
     [SerializeField] float _speed = 1.0f;//進行速度
     [SerializeField] public Owner _owner = 0;
     bool _reflected = false;
+    [SerializeField] GameObject _hiteffect;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +81,7 @@ private void OnCollisionEnter2D(Collision2D collision)
                 Vector2 newVelocity = Vector2.Reflect(_direction, inNormal);
                 _direction = newVelocity;
                 _reflected = true;
+                Instantiate(_hiteffect, transform.position, Quaternion.identity);
             }
         }
     }
