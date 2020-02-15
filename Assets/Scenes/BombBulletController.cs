@@ -48,10 +48,10 @@ public class BombBulletController : MonoBehaviour
         {
             HpZero = true;
         }
-        if (Input.anyKey)
-        {
-            HpZero = true;
-        }
+        //if (Input.anyKey)
+        //{
+        //    HpZero = true;
+        //}
     }
     public bool GetHpZero()
     {
