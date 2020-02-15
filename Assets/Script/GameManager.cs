@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool _Phase_Judge;
     [SerializeField] bool _Phase_FinalJudged;
 
+    [SerializeField] GameObject[] _1PwinUIs;
+    [SerializeField] GameObject[] _2PwinUIs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +42,26 @@ public class GameManager : MonoBehaviour
             {
                 _Phase_Judge = false;
                 _Phase_FinalJudged = true;
+                
                 _gameSpeed = 0;
             }
             else
             {
                 _finalJudgeTimeCount += 1 * Time.deltaTime;
+            }
+        }
+
+        if (_Phase_FinalJudged)
+        {
+            if(_winner == Winner._1pWin)
+            {
+                _1PwinUIs[0].SetActive(true);
+                _1PwinUIs[1].SetActive(true);
+            }
+            if (_winner == Winner._2pWin)
+            {
+                _2PwinUIs[0].SetActive(true);
+                _2PwinUIs[1].SetActive(true);
             }
         }
 
