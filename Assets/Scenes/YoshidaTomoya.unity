@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 844305509}
   - component: {fileID: 844305508}
   - component: {fileID: 844305506}
+  - component: {fileID: 844305507}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -145,7 +146,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoveSpeed: 8
-  bullet: {fileID: 4380875139811747653, guid: a7a59be2d719ea043b5038b4fe6daa65, type: 3}
+  frameRate: 10
+  bullet: {fileID: 6842574345849905910, guid: 81b9c12f9d391ba46b55c84fef1b99d6, type: 3}
+--- !u!114 &844305507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844305505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ef8a9f37019314eb9b08c4143a98f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _direction: {x: 0, y: 0, z: 0}
+  _owner: 1
+  speed: 200
+  parentName: 
+  timeLimit: 2
+  Fired: 0
+  wallHit: 0
+  thisBomb: 0
 --- !u!65 &844305508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -218,6 +240,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1578982120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578982122}
+  - component: {fileID: 1578982123}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578982122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578982120}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08947772, y: -0.6769085, z: -0.021661147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578982123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578982120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f0bff85e7d5ed47aa853ae308a4710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _winner: 0
+  _bombsCount: 0
+  _gameSpeed: 1
+  _startTimer: 5
+  _nowSpeed: 1
 --- !u!1 &1938789111
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class playerController : MonoBehaviour
     float z;
 
     float frame = 0.0f;
+    public float frameRate;
 
     Quaternion q;
 
@@ -79,7 +80,7 @@ public class playerController : MonoBehaviour
 
         if (stickPos.magnitude >= 0.1f)
         {
-            if (frame >= 10.0f)
+            if (frame >= frameRate)
             {
                 GameObject insB = Instantiate(bullet, transform.position, transform.localRotation);
                 insB.GetComponent<Bullet>()._direction = stickPos;
