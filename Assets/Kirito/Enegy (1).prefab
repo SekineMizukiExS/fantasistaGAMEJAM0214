@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4182854017599691852}
   m_Layer: 0
   m_Name: Enegy (1)
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4822,3 +4822,5 @@ MonoBehaviour:
   Bomb: {fileID: 0}
   FireBullet: 50
   Fired: 0
+  Hp: 10
+  HpZero: 0

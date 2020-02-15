@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
     {
         if (bomb)//爆弾の弾の移動
         {
-            thisBomb= true;
+            thisBomb= false;
             Fired = true;
         }
         else//プレイヤーの弾の移動
@@ -85,8 +85,12 @@ public class Bullet : MonoBehaviour
                         break;
                     case "Bomb":
                         //爆弾との衝突（ダメージ関数？）
+                        if(thisBomb == true)
+                        {
+                            other.GetComponent<BombBulletController>().HitBombBullet();
+                        }
                         if (!thisBomb) {
-                            other.GetComponent<BombController2>().HitPlayerBullet();
+                            other.GetComponent<BombBulletController>().HitPlayerBullet();
                         }
                         break;
                         
