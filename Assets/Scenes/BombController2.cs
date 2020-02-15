@@ -24,7 +24,7 @@ public class BombController2 : MonoBehaviour
         CreateBomb();
         HpMgr();
     }
-    void CreateBomb()
+    public void CreateBomb()
     {
         timeElapsed += Time.deltaTime;
         if (timeElapsed >= timeOut)
@@ -42,15 +42,15 @@ public class BombController2 : MonoBehaviour
         }
 
     }
-    void HitPlayerBullet()
+  public  void HitPlayerBullet()
     {
         Hp = 0;
     }
-    void HitBombBullet()
+   public  void HitBombBullet()
     {
         Hp--;
     }
-    void HpMgr()
+    public void HpMgr()
     {
         if(Hp <= 0)
         {
