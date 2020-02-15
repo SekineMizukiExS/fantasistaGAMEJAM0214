@@ -19,6 +19,8 @@ public class playerController : MonoBehaviour
     Quaternion targetDirection = Quaternion.identity;
     float z;
 
+    float frame = 0.0f;
+
     Quaternion q;
 
     //public GameObject _bullet; // バレットのプレハブを入れる
@@ -69,7 +71,7 @@ public class playerController : MonoBehaviour
 
         //playerMoveResult(playerMove);
 
-
+        frame += 1.0f;
 
         stickPos.x = Input.GetAxis("Horizontal2");
         stickPos.y = Input.GetAxis("Vertical2");
@@ -77,9 +79,14 @@ public class playerController : MonoBehaviour
 
         if (stickPos.magnitude >= 0.1f)
         {
-            GameObject insB = Instantiate(bullet, transform.position, transform.localRotation);
-            insB.GetComponent<Bullet>()._direction = stickPos;
-            insB.GetComponent<Bullet>()._owner = Bullet.Owner._1p;
+            if (frame >= 10.0f)
+            {
+                GameObject insB = Instantiate(bullet, transform.position, transform.localRotation);
+                insB.GetComponent<Bullet>()._direction = stickPos;
+                insB.GetComponent<Bullet>()._owner = Bullet.Owner._1p;
+
+                frame = 0.0f;
+            }
         }
 
         //if (Input.GetAxis("Vertical2") == 0 && Input.GetAxis("Horizontal2") == 0)
