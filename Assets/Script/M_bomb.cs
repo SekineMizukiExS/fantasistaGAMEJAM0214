@@ -7,7 +7,7 @@ public class M_bomb : MonoBehaviour
 
     //[SerializeField] float _deleteTime = 2.0f;
     [SerializeField] GameObject _bullet;
-
+    [SerializeField] GameObject _efect;
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +32,7 @@ public class M_bomb : MonoBehaviour
             insB.GetComponent<M_Bullet>()._direction = direction;
 
         }
+        Instantiate(_efect,transform.position,Quaternion.identity);
+        Destroy(gameObject);
     }
 }
