@@ -22,7 +22,6 @@ public class BombController2 : MonoBehaviour
     void Update()
     {
         CreateBomb();
-        HpMgr();
     }
     public void CreateBomb()
     {
@@ -41,29 +40,6 @@ public class BombController2 : MonoBehaviour
             }
         }
 
-    }
-  public  void HitPlayerBullet()
-    {
-        Hp = 0;
-    }
-   public  void HitBombBullet()
-    {
-        Hp--;
-    }
-    public void HpMgr()
-    {
-        if(Hp <= 0)
-        {
-            HpZero = true;
-        }
-        if(Input.anyKey)
-        {
-            HpZero = true;
-        }
-    }
-   public bool GetHpZero()
-    {
-        return HpZero;
     }
 }
 

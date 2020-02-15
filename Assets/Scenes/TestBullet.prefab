@@ -111,4 +111,4 @@ MonoBehaviour:
   timeLimit: 2
   Fired: 1
   wallHit: 0
-  thisBomb: 1
+  thisBomb: 0
