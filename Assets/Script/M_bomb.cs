@@ -8,7 +8,7 @@ public class M_bomb : MonoBehaviour
     //[SerializeField] float _deleteTime = 2.0f;
     [SerializeField] GameObject _bullet;
     [SerializeField] GameObject _efect;
-
+    [SerializeField] int _alotbullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class M_bomb : MonoBehaviour
 
     public void Explosion()
     {
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0; i < _alotbullet; i++) {
 
             Vector3 direction = new Vector3(Random.Range(-1.0f,1.0f), Random.Range(-1.0f, 1.0f),0);
             direction.Normalize();

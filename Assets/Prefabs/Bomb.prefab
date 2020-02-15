@@ -4784,8 +4784,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7348260003526419926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.2, y: -0.96, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4977215303142418395}
   m_Father: {fileID: 0}
@@ -4828,8 +4828,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f26e8e9757974441962481eb3eaea82, type: 3}
-  m_Color: {r: 1, g: 0.25, b: 0.25, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 570f14be03c54e646976337c23614d5f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4853,6 +4853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 4746333748127983485, guid: 96ef42f5b7011b44e88884a439d06495, type: 3}
   _efect: {fileID: 2379193674698517729, guid: 388693cbdddfad74a939d526a2223dcd, type: 3}
+  _alotbullet: 15
 --- !u!50 &7348260003526419924
 Rigidbody2D:
   serializedVersion: 4
@@ -4891,12 +4892,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 7, y: 7}
   m_EdgeRadius: 0
