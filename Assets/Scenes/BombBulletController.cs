@@ -18,7 +18,7 @@ public class BombBulletController : MonoBehaviour
     {
         CreateBombBullet();
     }
-    void CreateBombBullet()//弾を生成する関数
+  public  void CreateBombBullet()//弾を生成する関数
     {
 
         if (FireBullet > Fired)
