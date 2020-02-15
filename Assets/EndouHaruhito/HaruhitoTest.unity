@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 712699928}
   m_Layer: 0
   m_Name: TestWall
-  m_TagString: Wall
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 1703390597}
   m_Layer: 0
   m_Name: TestPlayer
-  m_TagString: Player
+  m_TagString: Players
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
