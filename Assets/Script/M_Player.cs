@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class M_Player : MonoBehaviour
 {
     GameManager _gm;
     Vector3 _inputAxis;

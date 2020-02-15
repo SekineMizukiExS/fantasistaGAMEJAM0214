@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombGenerater : MonoBehaviour
+public class M_BombGenerater : MonoBehaviour
 {
     [SerializeField] GameObject _bomb;
     // Start is called before the first frame update
