@@ -3,10 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
-{   
+{
+    public enum Owner
+    {
+        _bomb,//爆弾から出た弾
+        _1p,    // プレイヤーAの弾
+        _2p,  // プレイヤーBの弾
+    }
+
+    GameManager gm;//ゲームマネージャー
+
+    [SerializeField] public Vector3 _direction;//進行方向
+    //[SerializeField] float _speed = 1.0f;//進行速度
+    [SerializeField] public Owner _owner = 0;
+
     //弾の速度
-    [SerializeField]
-    private float speed = 100.0f;
+    public float speed = 100.0f;
 
     [SerializeField]
     private string parentName;
@@ -21,34 +33,54 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         timer = 0;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= timeLimit && thisBomb == true)
-        {
-            //時間経過による消滅（爆弾のみ）
-        }
+        transform.up = _direction;
+        transform.position += _direction * speed * gm._nowSpeed;
 
-        if (Fired == true && wallHit == false)
+    //    timer += Time.deltaTime;
+    //    if (timer >= timeLimit && thisBomb == true)
+    //    {
+    //        //時間経過による消滅（爆弾のみ）
+    //    }
+
+    //    if (Fired == true && wallHit == false)
+    //    {
+    //        //前方に向かって移動
+    //        Debug.Log("a");
+    //        Vector3 velocity = gameObject.transform.rotation * new Vector3(speed, 0, 0);
+    //        gameObject.transform.position += velocity * Time.deltaTime;
+    //    }
+    //    else if (wallHit == true && thisBomb == true)
+    //    {
+    //        //爆弾の弾だった場合の反射
+    //        Debug.Log("b");
+    //        Vector3 velocity = gameObject.transform.rotation * new Vector3(speed, 0, 0);
+    //        gameObject.transform.position -= velocity * Time.deltaTime;
+    //    }else if (wallHit == true && thisBomb == false)
+    //    {
+    //        //プレイヤーの飛ばした弾と壁が当たった場合の処理
+    //    }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_owner == Owner._1p || _owner == Owner._2p)
         {
-            //前方に向かって移動
-            Debug.Log("a");
-            Vector3 velocity = gameObject.transform.rotation * new Vector3(speed, 0, 0);
-            gameObject.transform.position += velocity * Time.deltaTime;
+            if (collision.gameObject.tag == "Bomb")
+            {
+                collision.GetComponent<M_bomb>().Explosion();
+            }
         }
-        else if (wallHit == true && thisBomb == true)
-        {
-            //爆弾の弾だった場合の反射
-            Debug.Log("b");
-            Vector3 velocity = gameObject.transform.rotation * new Vector3(speed, 0, 0);
-            gameObject.transform.position -= velocity * Time.deltaTime;
-        }else if (wallHit == true && thisBomb == false)
-        {
-            //プレイヤーの飛ばした弾と壁が当たった場合の処理
-        }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 
     //弾の生成時の処理
@@ -56,7 +88,7 @@ public class Bullet : MonoBehaviour
     {
         if (bomb)//爆弾の弾の移動
         {
-            thisBomb= true;
+            thisBomb = true;
             Fired = true;
         }
         else//プレイヤーの弾の移動
@@ -68,30 +100,30 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    //弾の当たり判定
-    private void OnTriggerEnter(Collider other)
-    {
-        if (Fired == true)
-        {
-            if (other.name != parentName)
-            {
-                switch(other.tag)
-                {
-                    case "Wall":
-                        wallHit = true;
-                        break;
-                    case "Players":
-                        //相手プレイヤーとの衝突（ダメージ関数？）
-                        break;
-                    case "Bomb":
-                        //爆弾との衝突（ダメージ関数？）
-                        if (!thisBomb) {
-                            other.GetComponent<BombController2>().HitPlayerBullet();
-                        }
-                        break;
-                        
-                }
-            }
-        }
-    }
+    ////弾の当たり判定
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (Fired == true)
+    //    {
+    //        if (other.name != parentName)
+    //        {
+    //            switch(other.tag)
+    //            {
+    //                case "Wall":
+    //                    wallHit = true;
+    //                    break;
+    //                case "Players":
+    //                    //相手プレイヤーとの衝突（ダメージ関数？）
+    //                    break;
+    //                case "Bomb":
+    //                    //爆弾との衝突（ダメージ関数？）
+    //                    if (!thisBomb) {
+    //                        other.GetComponent<BombController2>().HitPlayerBullet();
+    //                    }
+    //                    break;
+
+    //            }
+    //        }
+    //    }
+    //}
 }

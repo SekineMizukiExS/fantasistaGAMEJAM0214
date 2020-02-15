@@ -37,7 +37,7 @@ public class M_Player : MonoBehaviour
         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetDirection, 0.1f);
 
 
-        _inputAxis2.x = Input.GetAxis("Horizontal２");
+        _inputAxis2.x = Input.GetAxis("Horizontal2");
         _inputAxis2.y = Input.GetAxis("Vertical2");
         _inputAxis2.Normalize();
 

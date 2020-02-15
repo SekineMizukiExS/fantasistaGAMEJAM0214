@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoveSpeed: 8
+  bullet: {fileID: 4380875139811747653, guid: a7a59be2d719ea043b5038b4fe6daa65, type: 3}
 --- !u!65 &844305508
 BoxCollider:
   m_ObjectHideFlags: 0
