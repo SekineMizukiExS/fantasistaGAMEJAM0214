@@ -17,6 +17,7 @@ public class M_Bullet : MonoBehaviour
     [SerializeField] public Vector3 _direction;//進行方向
     [SerializeField] float _speed = 1.0f;//進行速度
     [SerializeField] public Owner _owner = 0;
+    bool _reflected = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,13 +34,52 @@ public class M_Bullet : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_owner == Owner._1p || _owner == Owner._2p)
+
+        if (collision.gameObject.tag == "Bomb")
         {
-            if (collision.gameObject.tag == "Bomb")
+            collision.gameObject.GetComponent<M_bomb>().Explosion();
+        }
+
+        if (collision.gameObject.tag == "Players")
+        {
+            var hitplayer = collision.gameObject.GetComponent<M_Player>();
+            if (_owner == Owner._1p)
             {
-                collision.GetComponent<M_bomb>().Explosion();
+                if (2 == hitplayer.GetPlayerNo())
+                {
+                    hitplayer.AddDamage(1);
+                    Destroy(gameObject);
+                }
+            }
+            if (_owner == Owner._2p)
+            {
+                if (1 == hitplayer.GetPlayerNo())
+                {
+                    hitplayer.AddDamage(1);
+                    Destroy(gameObject);
+                }
+            }
+            if (_owner == Owner._bomb)
+            {
+                hitplayer.AddDamage(1);
+
+                Destroy(gameObject);
+            }
+        }
+        if (collision.gameObject.tag == "Wall")
+        {
+            if (_reflected || _owner != Owner._bomb) {
+                Destroy(gameObject);
+                }
+            else
+            {
+                Vector2 inNormal = collision.contacts[0].normal;
+                Vector2 newVelocity = Vector2.Reflect(_direction, inNormal);
+                _direction = newVelocity;
+                _reflected = true;
             }
         }
     }

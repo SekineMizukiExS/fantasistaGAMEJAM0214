@@ -82,9 +82,9 @@ public class playerController : MonoBehaviour
         {
             if (frame >= frameRate)
             {
-                //GameObject insB = Instantiate(bullet, transform.position, transform.localRotation);
-                //insB.GetComponent<Bullet>()._direction = stickPos;
-                //insB.GetComponent<Bullet>()._owner = Bullet.Owner._1p;
+                GameObject insB = Instantiate(bullet, transform.position, transform.localRotation);
+                insB.GetComponent<M_Bullet>()._direction = stickPos;
+                insB.GetComponent<M_Bullet>()._owner = M_Bullet.Owner._1p;
 
                 frame = 0.0f;
             }
